@@ -1,33 +1,51 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import Header from "./Components/Header"
+import CurrentWeather from "./Components/CurrentWeather"
+import Forecast from "./Components/Forecast"
+import Background from "./Components/Background"
 import './App.css'
 
+
+
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [city, setCity] = useState(" ");
+  const [weatherData, setWeatherData] = useState(null);
+  const [forecastData, setForecastData] = useState(null);
+
+
+  const apiKey = "7ced477d39aa44780e95afb9dec1c8bb"
+
+  const fetchWeather = async (cityName) => {
+    try {
+      const weatherRes = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric&lang=es`
+      );
+      const weather = await weatherRes.json();
+
+      const forecastRes = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}&units=metric&lang=es`
+      );
+      const forecast = await forecastRes.json();
+
+      setWeatherData(weather);
+      setForecastData(forecast);
+      setCity(cityName);
+
+    } catch (error) {
+      console.error("Error al obtener el clima", error)
+    }
+  }
+
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Background weather={weatherData} />
+      <Header onSearch={weatherRes} />
+      <main>
+        <CurrentWeather data={weatherData} />
+        <Forecast data={forecastData} />
+      </main>
     </>
   )
 }
