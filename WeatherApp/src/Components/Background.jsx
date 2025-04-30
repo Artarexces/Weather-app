@@ -1,5 +1,5 @@
 import React from 'react'
-import './Background.css'
+
 
 const Background = ({ weather, hour }) => {
     let className = 'default';

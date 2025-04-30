@@ -4,6 +4,7 @@ import CurrentWeather from "./Components/CurrentWeather"
 import Forecast from "./Components/Forecast"
 import Background from "./Components/Background"
 import './App.css'
+import { meta } from '@eslint/js'
 
 
 
@@ -14,7 +15,7 @@ function App() {
   const [forecastData, setForecastData] = useState(null);
 
 
-  const apiKey = "7ced477d39aa44780e95afb9dec1c8bb"
+  const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY
 
   const fetchWeather = async (cityName) => {
     try {
