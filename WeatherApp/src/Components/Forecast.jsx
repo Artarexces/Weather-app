@@ -1,12 +1,12 @@
 import React from 'react'
 
-const Forecast = ({ forecast }) => {
-    if (!forecast) return null;
+const Forecast = ({ data }) => {
+    if (!data) return null;
     return (
         <section>
             <h3>Pronostico semanal</h3>
             <div className='forecast-card'>
-                {forecast.map((day, index) => (
+                {data.map((day, index) => (
                     <div key={index}>
                         <p>{new Date(day.dt * 1000).toLocaleDateString()}</p>
                         <p>{Math.round(day.temp.day)}°C</p>

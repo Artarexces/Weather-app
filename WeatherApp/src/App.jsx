@@ -17,6 +17,7 @@ function App() {
 
   const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY
 
+
   const fetchWeather = async (cityName) => {
     try {
       const weatherRes = await fetch(
@@ -42,7 +43,7 @@ function App() {
   return (
     <>
       <Background weather={weatherData} />
-      <Header onSearch={weatherRes} />
+      <Header onSearch={fetchWeather} />
       <main>
         <CurrentWeather data={weatherData} />
         <Forecast data={forecastData} />
