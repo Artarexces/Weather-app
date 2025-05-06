@@ -11,15 +11,16 @@ const Header = ({ onSearch }) => {
     }
 
     return (
-        <header>
-            <form onSubmit={handleSubmit}>
+        <header className='header'>
+            <form onSubmit={handleSubmit} className='header-form'>
                 <input
+                    className='header-input'
                     type="text"
                     placeholder='Busca una ciudad...'
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                 />
-                <button type="submit">Search</button>
+                <button className='header-btn' type="submit">Search</button>
             </form>
         </header>
     )
