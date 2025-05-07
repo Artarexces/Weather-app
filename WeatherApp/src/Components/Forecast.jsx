@@ -31,19 +31,17 @@ const Forecast = ({ data }) => {
         return { date, min, max, icon, description };
     });
     return (
-        <section className='forecast-section'>
+        <section>
             <h3>Pronostico semanal</h3>
-            <div className='forecast-wrapper'>
-                <div className='forecast-card'>
-                    {summerizedForecast.map((day, index) => (
-                        <div key={index} className='forecast-day'>
-                            <p>{day.date}</p>
-                            <img src={`https://openweathermap.org/img/wn/${day.icon}@2x.png`} alt={day.description} />
-                            <p>{Math.round(day.min)}°C / {Math.round(day.max)}°C</p>
-                            <p>{day.description}</p>
-                        </div>
-                    ))}
-                </div>
+            <div className='forecast-card'>
+                {summerizedForecast.map((day, index) => (
+                    <div key={index} className='forecast-day'>
+                        <p>{day.date}</p>
+                        <img src={`https://openweathermap.org/img/wn/${day.icon}@2x.png`} alt={day.description} />
+                        <p>{Math.round(day.min)}°C / {Math.round(day.max)}°C</p>
+                        <p>{day.description}</p>
+                    </div>
+                ))}
             </div>
         </section>
     );
