@@ -35,7 +35,7 @@ const Forecast = ({ data }) => {
             <h3>Pronostico semanal</h3>
             <div className='forecast-card'>
                 {summerizedForecast.map((day, index) => (
-                    <div key={index} className='forecast-day'>
+                    <div key={index} className={`forecast-day ${day.description.toLowerCase().replace(' ', '-')}`} >
                         <p>{day.date}</p>
                         <img src={`https://openweathermap.org/img/wn/${day.icon}@2x.png`} alt={day.description} />
                         <p>{Math.round(day.min)}°C / {Math.round(day.max)}°C</p>

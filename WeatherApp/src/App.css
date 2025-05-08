@@ -5,15 +5,18 @@
     --accent: #7f4fff;
     --text-ligth: #ffffff;
     --text-muted: #cfc5e2;
+    --card-ligth: #ffffff34;
+    --bg-ligth2: #ffffff18;
+    --desc-ligth: #ffffffb7;
 }
 
-
+/* Body & app */
 
 body, .App { 
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-dark);
+    background-color: var(--bg-ligth);
     color: var(--text-ligth);
     display: flex;
     flex-direction: column;
@@ -24,26 +27,33 @@ body, .App {
 
 
 main {
-    flex: 1;
-    display: flex;
-    padding: 1rem;
-    flex-direction: column;
-    gap: 1.5rem;
-
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "current current"
+    "description forecast";
+  gap: 1rem;
 }
 
-@media (max-width: 786px) {
-    main {
-        flex-direction: row;
-    } 
-
+main > :nth-child(1) {
+  grid-area: current;
 }
 
+
+main > :nth-child(2) {
+  grid-area: description;
+}
+
+
+main > :nth-child(3) {
+  grid-area: forecast;
+}
 
 /* Header styles */
 
 .header {
-    background: var(--bg-ligth);
+    background: var(--bg-dark);
     padding: 1rem;
     text-align: center;
 }
@@ -83,7 +93,7 @@ main {
 /* Currentweather styles */
 
 .current-weather {
-    background: var(--card-bg);
+    background: var(--bg-ligth2);
     padding: 1.5rem;
     border-radius: 1rem;
     text-align: center;
@@ -108,8 +118,11 @@ main {
 .forecast-card { 
     display: flex;
     gap: 1rem;  
-    cursor: pointer;
+    overflow: visible;
+    margin-left: 1rem;
 }
+
+
 
 .forecast-card img {
     height: 40px;
@@ -120,22 +133,40 @@ main {
 
 .forecast-day {
     position: relative;
-    flex: 0 0 100px;
-    background: var(--card-bg);
+    flex:0 0 100px;
+    background: var(--card-ligth);
     border-radius: 1rem;
     padding: 1rem;
     text-align: center;
+    cursor: pointer;
     transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .forecast-day:hover {
-    transform: scale(1.05);
+    transform: scale(1.2);
     filter: brightness(1.3);
     z-index: 10;
 }
 
 
-
+.weather-description {
+  background: var(--desc-ligth);
+  padding: 2rem;
+  display: flex;
+  border-radius: 1rem ;
+  border: 3px bold white;
+  max-width: 80%;
+  margin-right: 1rem;
+  flex-direction: column;
+  margin: 1rem 0;
+  color: var(--bg-dark);
+  font-size: 1.1rem;
+  line-height: 1;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInUp 0.6s ease-out forwards;
+  animation-delay: 0.3s;
+}
 
 
 .background { 
@@ -145,22 +176,70 @@ main {
     width: 100%;
     height: 100%;
     z-index: -1;
-    background-size: cover;
+    background-size:cover;
     transition: background 0.5s ease;
+    opacity: 0;
+    animation: fadeInBg 0.8S ease-out forwards;
 }
 
 .background.clear { 
-    background-image: url('/images/clear-day.jpg');
+    background-image: url('public/images/clear.jpg');
 }
 
 .background.night { 
-    background-image: url('/images/clear-night-day.jpg');
+    background-image: url('public/images/night.jpg');
 }
 
 .background.rain { 
-    background-image: url('/images/.rain.jpg');
+    background-image: url('public/images/rain.jpg');
 }
 
 .background.cloudy { 
-    background-image: url('/images/cloudy.jpg');
+    background-image: url('public/images/cloudy.jpg');
 }
+
+
+/* media querys */ 
+
+@media (max-width: 786px) {
+    main {
+        flex-direction: row;
+    } 
+
+}
+
+
+
+/* Anmimaciones @key frames */
+
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInBg {
+    from { 
+        opacity: 0; 
+    }
+    to   { 
+        opacity: 1; 
+    }
+}
+
+.fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+

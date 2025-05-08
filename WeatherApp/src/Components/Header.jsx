@@ -7,7 +7,7 @@ const Header = ({ onSearch }) => {
         e.preventDefault();
         if (!city) return;
         onSearch(city);
-        setCity(" ");
+        setCity("");
     }
 
     return (
