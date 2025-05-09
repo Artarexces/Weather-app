@@ -14,7 +14,7 @@ const CurrentWeather = ({ data }) => {
             <p>{weather[0].description}</p>
             <p>{Math.round(main.temp)}°C</p>
             <p>Humeda:{main.humidity}%</p>
-            <p>Viento:{wind.speed} m/s</p>
+            <p>Viento:{wind.speed} K/ms</p>
         </section>
     )
 }

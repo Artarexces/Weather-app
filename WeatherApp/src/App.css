@@ -90,6 +90,7 @@ main > :nth-child(3) {
 }
 
 
+
 /* Currentweather styles */
 
 .current-weather {
@@ -113,21 +114,21 @@ main > :nth-child(3) {
     color: var(--text-muted);
 }
 
+
+
 /* Forecast-card  */
 
 .forecast-card { 
     display: flex;
     gap: 1rem;  
     overflow: visible;
-    margin-left: 1rem;
+    margin-left: 2rem;
 }
-
 
 
 .forecast-card img {
     height: 40px;
     width: 40px;
-
 }
 
 
@@ -140,7 +141,12 @@ main > :nth-child(3) {
     text-align: center;
     cursor: pointer;
     transition: transform 0.2s ease, filter 0.2s ease;
-}
+    /* animation: fadeInUp 0.6s ease-out forwards;
+    animation-delay: 0.3s; */
+}  
+
+/* POR ACA DEJAMOS EL ASUNTO ARRIBA... */
+
 
 .forecast-day:hover {
     transform: scale(1.2);
@@ -154,7 +160,7 @@ main > :nth-child(3) {
   padding: 2rem;
   display: flex;
   border-radius: 1rem ;
-  border: 3px bold white;
+  border: 1px solid white;
   max-width: 80%;
   margin-right: 1rem;
   flex-direction: column;

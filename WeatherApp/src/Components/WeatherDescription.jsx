@@ -7,7 +7,7 @@ const WeatherDescription = ({ name, description, temp, humidity, windSpeed }) =>
         <div className='weather-description'>
             <p>Hoy el clima en <strong>{name}</strong> esta {desc},</p>
             <p>con una temperatura de {Math.round(temp)}°C, humedad {humidity}%</p>
-            <p>y viento a {windSpeed} m/s</p>
+            <p>y viento a {windSpeed} K/ms</p>
         </div>
     )
 }
