@@ -8,7 +8,7 @@ const CurrentWeather = ({ data }) => {
     const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
     return (
-        <section className="current-weather fade-in-up delay-2">
+        <section className="current-weather">
             <h2>{name}</h2>
             <img src={iconUrl} alt={weather[0].description} />
             <p>{weather[0].description}</p>

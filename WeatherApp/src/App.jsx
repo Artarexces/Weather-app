@@ -5,7 +5,8 @@ import Forecast from "./Components/Forecast"
 import Background from "./Components/Background"
 import WeatherDescription from './Components/WeatherDescription'
 import './App.css'
-
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 import { meta } from '@eslint/js'
 
 
@@ -46,6 +47,32 @@ function App() {
       console.error("Error al obtener el clima", error)
     }
   }
+
+  useGSAP(() => {
+
+    gsap.to(".current-weather, .weather-description", {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      stagger: 0.3,
+    });
+
+    gsap.from(".forecast-day", {
+      opacity: 1,
+      y: 20,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: "back.in(1.7)",
+      delay: 0.3
+    })
+
+    gsap.to(".background", {
+      opacity: 1,
+      duration: 1.5,
+      ease: "power4.out"
+    })
+
+  }, [searchCount])
 
 
   return (
