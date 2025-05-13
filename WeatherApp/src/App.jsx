@@ -5,6 +5,7 @@ import Forecast from "./Components/Forecast"
 import Background from "./Components/Background"
 import WeatherDescription from './Components/WeatherDescription'
 import './App.css'
+
 import { meta } from '@eslint/js'
 
 
@@ -78,7 +79,6 @@ function App() {
             windSpeed={weatherData.wind.speed}
           />
         )}
-
 
 
       </main>

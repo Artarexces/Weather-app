@@ -154,6 +154,9 @@ main > :nth-child(3) {
     z-index: 10;
 }
 
+h3 {
+    margin-left: 27px;
+}
 
 .weather-description {
   background: var(--desc-ligth);
